@@ -6,8 +6,11 @@ expenses = defaultdict(int)
 
 st.title('Expense Tracker')
 
+# Define the categories
+categories = ['Utilities', 'Property maintenance', 'Cleaning supplies', 'Staff salaries and wages', 'Employee benefits', 'Property taxes', 'Insurance', 'Promotional expenses', 'Online presence', 'Toiletries and linens', 'Breakfast or other complimentary services', 'Office supplies', 'Accounting and legal fees', 'Budget for periodic renovations and upgrades', 'Property management system (PMS)', 'Online reservation platforms', 'Set aside a portion for unexpected expenses or emergencies']
+
 # Get the category from the user
-category = st.text_input("Enter Category")
+category = st.selectbox("Select Category", options=categories)
 
 # Get the amount from the user
 amount = st.number_input("Enter Amount", min_value=0.0, step=0.01)
