@@ -8,24 +8,6 @@
 2. Property maintenance
 3. Cleaning supplies
 
-**Personnel Expenses:** 4. Staff salaries and wages
-
-5. Employee benefits
-    - Health insurance
-    - Vacation pay
-
-**Property-related Costs:** 6. Property taxes
-
-7. Insurance
-    - Property insurance
-    - Liability insurance
-
-**Marketing and Advertising:** 8. Promotional expenses
-
-9. Online presence
-    - Website maintenance
-    - Online booking platform fees
-
 **Guest Amenities:** 10. Toiletries and linens
 
 11. Breakfast or other complimentary services
