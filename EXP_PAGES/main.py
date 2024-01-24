@@ -2,81 +2,81 @@ import streamlit as st
 import csv
 import plotly.express as px
 import pandas as pd
+import json
 from collections import defaultdict
 from datetime import datetime
 
-# Initialize the dictionary to store the expenses
-expenses = defaultdict(int)
+class ExpenseTracker:
+    def __init__(self):
+        self.expenses = defaultdict(int)
+
+    def add_expense(self, category, amount, date):
+        self.expenses[category] += amount
+        try:
+            with open('expenses.csv', 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow([date, category, amount])
+        except Exception as e:
+            st.error(str(e))
+
+tracker = ExpenseTracker()
 
 st.title('Expense Tracker')
 
-# Define the categories
-categories = ['Utilities', 'Property maintenance', 'Cleaning supplies', 'Staff salaries and wages', 'Employee benefits', 'Property taxes', 'Insurance', 'Promotional expenses', 'Online presence', 'Toiletries and linens', 'Breakfast or other complimentary services', 'Office supplies', 'Accounting and legal fees', 'Budget for periodic renovations and upgrades', 'Property management system (PMS)', 'Online reservation platforms', 'Set aside a portion for unexpected expenses or emergencies']
-
-# Navigation menu
 page = st.sidebar.selectbox("Go to", ("📝 Entry", "📊 Report"))
 
+# Load the categories from the JSON file
+with open('categories.json') as f:
+    categories = json.load(f)
+
+# Flatten the categories into a list
+flat_categories = []
+for category, subcategories in categories['Transactions']['Expenses'].items():
+    flat_categories.append(category)
+
 def entry():
-    # Get the date from the user
     date = st.date_input("Enter Date")
-
-    # Get the category from the user
-    category = st.selectbox("Select Category", options=categories)
-
-    # Get the amount from the user
+    category = st.selectbox("Select Category", options=flat_categories)
+    subcategory = st.selectbox("Select Subcategory", options=categories['Transactions']['Expenses'][category]) if category else None
     amount = st.number_input("Enter Amount", min_value=0.0, step=0.01)
+    comment = st.text_input("Comment")
 
     if st.button('Submit'):
-        if category and amount and date:
-            expenses[category] += amount
-            st.success(f'Successfully added {amount:,.2f} UGX to {category}.')
-            try:
-                with open('expenses.csv', 'a', newline='') as f:
-                    writer = csv.writer(f)
-                    writer.writerow([date, category, amount])
-            except Exception as e:
-                st.error(str(e))
+        if category and amount and date and subcategory:
+            tracker.add_expense(f"{category}/{subcategory}", amount, date)
+            st.success(f'Successfully added {amount:,.2f} UGX to {category}/{subcategory}.')
         else:
-            st.error('Please enter both category, amount, and date.')
+            st.error('Please enter all required fields.')
 
 @st.cache
 def load_data():
     try:
         return pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount'], header=None, skiprows=1, error_bad_lines=False)
     except Exception as e:
-        st.error('An error occurred while loading the data. Please check the CSV file.')
+        st.error(f'An error occurred while loading the data: {str(e)}. Please check the CSV file.')
         return None
 
 def report():
-    # Load the data from the CSV file
     df = load_data()
     if df is None:
         return
 
-    # Convert the 'Date' column to datetime format
     df['Date'] = pd.to_datetime(df['Date'])
+    selected_categories = st.multiselect("Select Categories", options=flat_categories, default=flat_categories)
 
-    # Get the selected categories from the user
-    selected_categories = st.multiselect("Select Categories", options=categories, default=categories)
-
-    # Filter the DataFrame based on the selected categories
     if selected_categories:
         df_filtered = df[df['Category'].isin(selected_categories)]
     else:
         df_filtered = df
 
-    # Get the start and end dates from the user
     start_date = st.date_input("Start Date", value=df['Date'].min())
     end_date = st.date_input("End Date", value=df['Date'].max())
 
-    # Convert start_date and end_date to datetime
     start_date = pd.Timestamp(start_date)
     end_date = pd.Timestamp(end_date)
 
-    # Filter the DataFrame based on the selected dates
     df_filtered = df_filtered[(df_filtered['Date'] >= start_date) & (df_filtered['Date'] <= end_date)]
 
-    # Create a pivot table
     pivot_table = df_filtered.pivot_table(
         values='Amount',
         index='Date',
@@ -84,7 +84,6 @@ def report():
         aggfunc='sum'
     ).fillna(0)
 
-    # Create a line chart with interactive features
     try:
         fig = px.line(
             pivot_table,
@@ -102,7 +101,6 @@ def report():
     except Exception as e:
         st.error(str(e))
 
-# Display the appropriate page based on the user's selection
 if page == "📝 Entry":
     entry()
 elif page == "📊 Report":

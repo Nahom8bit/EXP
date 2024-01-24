@@ -1,0 +1,11 @@
+{
+    "Transactions": {
+        "Expenses": {
+            "Utilities": ["electricity", "water", "internet"],
+            "Maintenance": ["property management", "cleaning supplies", "general Supplies", "Renovation", "Upkeep"],
+            "Personal": ["staff salaries and wages", "petty cash"],
+            "Petty Cash": ["misc"],
+            "Stocks": ["Groceries", "clothing", "misc"]
+        }
+    }
+}
