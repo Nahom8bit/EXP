@@ -14,9 +14,9 @@ st.title('Expense Tracker')
 categories = ['Utilities', 'Property maintenance', 'Cleaning supplies', 'Staff salaries and wages', 'Employee benefits', 'Property taxes', 'Insurance', 'Promotional expenses', 'Online presence', 'Toiletries and linens', 'Breakfast or other complimentary services', 'Office supplies', 'Accounting and legal fees', 'Budget for periodic renovations and upgrades', 'Property management system (PMS)', 'Online reservation platforms', 'Set aside a portion for unexpected expenses or emergencies']
 
 # Navigation menu
-page = st.sidebar.radio("Go to", ("Entry", "Report"))
+page = st.sidebar.selectbox("Go to", ("📝 Entry", "📊 Report"))
 
-if page == "Entry":
+def entry():
     # Get the date from the user
     date = st.date_input("Enter Date")
 
@@ -39,13 +39,19 @@ if page == "Entry":
         else:
             st.error('Please enter both category, amount, and date.')
 
-elif page == "Report":
-    # Read the data from the CSV file
+@st.cache
+def load_data():
     try:
-        df = pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount'], header=None, skiprows=1)
+        return pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount'], header=None, skiprows=1, error_bad_lines=False)
     except Exception as e:
-        st.error(str(e))
-        st.stop()
+        st.error('An error occurred while loading the data. Please check the CSV file.')
+        return None
+
+def report():
+    # Load the data from the CSV file
+    df = load_data()
+    if df is None:
+        return
 
     # Convert the 'Date' column to datetime format
     df['Date'] = pd.to_datetime(df['Date'])
@@ -95,3 +101,9 @@ elif page == "Report":
         st.plotly_chart(fig, use_container_width=True)
     except Exception as e:
         st.error(str(e))
+
+# Display the appropriate page based on the user's selection
+if page == "📝 Entry":
+    entry()
+elif page == "📊 Report":
+    report()
