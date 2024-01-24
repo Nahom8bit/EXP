@@ -10,12 +10,12 @@ class ExpenseTracker:
     def __init__(self):
         self.expenses = defaultdict(int)
 
-    def add_expense(self, category, amount, date):
+    def add_expense(self, category, amount, date, comment):
         self.expenses[category] += amount
         try:
             with open('expenses.csv', 'a', newline='') as f:
                 writer = csv.writer(f)
-                writer.writerow([date, category, amount])
+                writer.writerow([date, category, amount, comment])
         except Exception as e:
             st.error(str(e))
 
@@ -23,7 +23,7 @@ tracker = ExpenseTracker()
 
 st.title('Expense Tracker')
 
-page = st.sidebar.selectbox("Go to", ("📝 Entry", "📊 Report"))
+page = st.sidebar.radio("Go to", ("📝 Entry", "📊 Report", "🔍 Review"))
 
 # Load the categories from the JSON file
 with open('categories.json') as f:
@@ -43,15 +43,15 @@ def entry():
 
     if st.button('Submit'):
         if category and amount and date and subcategory:
-            tracker.add_expense(f"{category}/{subcategory}", amount, date)
+            tracker.add_expense(f"{category}/{subcategory}", amount, date, comment)
             st.success(f'Successfully added {amount:,.2f} UGX to {category}/{subcategory}.')
         else:
             st.error('Please enter all required fields.')
 
-@st.cache
+@st.cache_data
 def load_data():
     try:
-        return pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount'], header=None, skiprows=1, error_bad_lines=False)
+        return pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount', 'Comment'], header=None, skiprows=1, error_bad_lines=False)
     except Exception as e:
         st.error(f'An error occurred while loading the data: {str(e)}. Please check the CSV file.')
         return None
@@ -101,7 +101,16 @@ def report():
     except Exception as e:
         st.error(str(e))
 
+def review():
+    df = load_data()
+    if df is None:
+        return
+
+    st.write(df)
+
 if page == "📝 Entry":
     entry()
 elif page == "📊 Report":
     report()
+elif page == "🔍 Review":
+    review()
