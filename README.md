@@ -21,15 +21,17 @@ bash pip install streamlit pandas plotly
 
 Clone the repository:
 
-bash git clone https://github.com/NahomDaniel/EXP.git cd EXP
-
+```
+git clone https://github.com/NahomDaniel/EXP.git cd EXP
+```
 
 ## Usage
 
 Run the Streamlit app:
 
-bash streamlit run main.py
-
+```
+streamlit run main.py
+```
 
 This will start the app and open it in your default web browser.
 
