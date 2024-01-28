@@ -1,70 +1,63 @@
-2024-03-02,Utilities,15000.0
-2024-03-02,Cleaning supplies,24000.0
-2024-03-02,Property maintenance,30000.0
-2024-03-02,Staff salaries and wages,45000.0
-2024-03-02,Employee benefits,6500.0
-2024-03-02,Property taxes,25000.0
-2024-02-18,Utilities,14000.0
-2024-02-18,Cleaning supplies,22000.0
-2024-02-18,Property maintenance,28000.0
-2024-02-18,Staff salaries and wages,42000.0
-2024-02-18,Employee benefits,6200.0
-2024-02-18,Property taxes,24000.0
-2024-02-05,Utilities,13000.0
-2024-02-05,Cleaning supplies,20000.0
-2024-02-05,Property maintenance,26000.0
-2024-02-05,Staff salaries and wages,40000.0
-2024-02-05,Employee benefits,6000.0
-2024-02-05,Property taxes,23000.0
-2024-01-23,Utilities,12000.0
-2024-01-23,Cleaning supplies,18900.0
-2024-01-23,Property maintenance,25000.0
-2024-01-23,Staff salaries and wages,39000.0
-2024-01-23,Employee benefits,5800.0
-2024-01-23,Property taxes,22000.0
-2024-01-23,Insurance,24000.0
-2024-01-23,Promotional expenses,13000.0
-2024-01-23,Online presence,8800.0
-2024-01-23,Toiletries and linens,6800.0
-2024-01-23,Breakfast or other complimentary services,13500.0
-2024-01-23,Office supplies,3700.0
-2024-01-23,Accounting and legal fees,14000.0
-2024-01-23,Budget for periodic renovations and upgrades,55000.0
-2024-01-23,Property management system (PMS),13000.0
-2024-01-23,Online reservation platforms,9000.0
-2024-01-23,Set aside a portion for unexpected expenses or emergencies,17000.0
-2024-01-10,Utilities,12000.0
-2024-01-10,Cleaning supplies,20000.0
-2024-01-10,Property maintenance,250000.0
-2024-01-10,Online reservation platforms,8500.0
-2024-01-10,Set aside a portion for unexpected expenses or emergencies,16000.0
-2024-01-03,Promotional expenses,12000.0
-2024-01-03,Online presence,8500.0
-2024-01-03,Toiletries and linens,6500.0
-2024-01-03,Breakfast or other complimentary services,13000.0
-2024-01-03,Office supplies,3500.0
-2024-01-03,Accounting and legal fees,13000.0
-2023-10-20,Budget for periodic renovations and upgrades,50000.0
-2023-10-20,Property management system (PMS),12000.0
-2023-07-15,Toiletries and linens,6500.0
-2023-07-15,Breakfast or other complimentary services,13000.0
-2023-07-15,Office supplies,3500.0
-2023-07-15,Accounting and legal fees,13000.0
-2023-04-08,Toiletries and linens,6500.0
-2023-04-08,Breakfast or other complimentary services,13000.0
-2023-01-03,Promotional expenses,12000.0
-2023-01-03,Online presence,8500.0
-2022-10-25,Property taxes,20000.0
-2022-10-25,Insurance,22000.0
-2022-07-20,Staff salaries and wages,38000.0
-2022-07-20,Employee benefits,5500.0
-2022-04-15,Utilities,12000.0
-2022-04-15,Cleaning supplies,15000.0
-2022-04-15,Property maintenance,60000.0
-2022-01-10,Online reservation platforms,8000.0
-2022-01-10,Set aside a portion for unexpected expenses or emergencies,15000.0
-2021-08-30,Budget for periodic renovations and upgrades,45000.0
-2021-08-30,Property management system (PMS),10000.0
-2021-05-25,Office supplies,3000.0
-2021-05-25,Accounting and legal fees,12000.0
-2021-02-18,Toiletries and linens
+2023-07-12,Stocks,34250.45,Stocks expense,17:28:52
+2023-11-29,Maintenance,17463.89,Maintenance expense,09:41:13
+2023-09-02,Utilities,51423.66,Utilities expense,14:37:22
+2023-12-21,Petty Cash,34909.15,Petty Cash expense,21:54:36
+2023-09-21,Personal,4788.76,Personal expense,18:14:45
+2023-11-14,Maintenance,31778.07,Maintenance expense,13:06:34
+2023-08-30,Utilities,57253.15,Utilities expense,23:15:11
+2023-11-06,Petty Cash,11727.27,Petty Cash expense,08:06:01
+2023-08-10,Maintenance,3982.14,Maintenance expense,10:23:37
+2023-08-08,Petty Cash,27071.76,Petty Cash expense,01:52:46
+2023-11-13,Utilities,54724.59,Utilities expense,05:38:07
+2023-11-25,Personal,37837.57,Personal expense,04:09:28
+2023-08-26,Maintenance,27283.43,Maintenance expense,03:34:54
+2023-11-12,Utilities,52887.07,Utilities expense,15:58:35
+2023-09-05,Maintenance,40971.55,Maintenance expense,09:24:16
+2023-09-23,Personal,15236.27,Personal expense,00:05:13
+2023-11-21,Stocks,29875.79,Stocks expense,17:56:20
+2023-10-02,Stocks,46552.07,Stocks expense,20:33:42
+2023-09-13,Stocks,36494.78,Stocks expense,09:04:16
+2023-08-05,Utilities,49685.57,Utilities expense,05:22:53
+2023-12-17,Maintenance,28050.25,Maintenance expense,13:13:36
+2023-07-01,Petty Cash,16564.11,Petty Cash expense,04:16:48
+2023-09-26,Stocks,27184.37,Stocks expense,19:14:34
+2023-07-24,Petty Cash,31318.44,Petty Cash expense,08:31:45
+2023-12-04,Maintenance,21745.39,Maintenance expense,14:44:23
+2023-11-22,Maintenance,15671.56,Maintenance expense,23:02:18
+2023-06-05,Personal,9975.74,Personal expense,17:15:04
+2023-08-29,Stocks,39768.24,Stocks expense,22:36:32
+2023-11-01,Utilities,53689.98,Utilities expense,20:59:40
+2023-09-03,Stocks,26229.36,Stocks expense,10:58:01
+2023-05-16,Personal,41892.55,Personal expense,01:48:32
+2023-05-22,Utilities,56329.46,Utilities expense,09:27:56
+2023-05-26,Petty Cash,48327.88,Petty Cash expense,15:50:37
+2023-08-15,Maintenance,22006.64,Maintenance expense,11:40:08
+2023-11-02,Stocks,43868.98,Stocks expense,17:11:15
+2023-05-19,Maintenance,40963.12,Maintenance expense,21:45:47
+2023-06-30,Utilities,52415.55,Utilities expense,03:20:36
+2023-09-17,Maintenance,33448.42,Maintenance expense,08:33:55
+2023-06-21,Personal,39260.94,Personal expense,16:47:04
+2023-09-30,Maintenance,11657.04,Maintenance expense,22:02:59
+2023-10-16,Petty Cash,26751.79,Petty Cash expense,13:29:31
+2023-09-19,Utilities,46536.03,Utilities expense,19:34:12
+2023-05-06,Petty Cash,37050.37,Petty Cash expense,10:57:34
+2023-07-14,Maintenance,42792.05,Maintenance expense,12:43:56
+2023-10-11,Utilities,54891.02,Utilities expense,14:01:45
+2023-09-28,Stocks,29887.89,Stocks expense,02:07:21
+2023-06-18,Personal,21552.01,Personal expense,23:13:58
+2023-11-03,Maintenance,13997.33,Maintenance expense,06:30:47
+2023-08-02,Stocks,48416.49,Stocks expense,19:14:01
+2023-05-27,Utilities,52999.62,Utilities expense,20:01:18
+2023-11-15,Petty Cash,42635.67,Petty Cash expense,05:35:41
+2023-08-25,Stocks,38490.82,Stocks expense,01:21:08
+2023-08-16,Maintenance,12325.18,Maintenance expense,17:48:18
+2023-10-26,Personal,35963.84,Personal expense,12:59:32
+2023-11-09,Maintenance,33329.52,Maintenance expense,21:15:45
+2023-06-24,Stocks,45498.29,Stocks expense,08:25:03
+2023-12-29,Utilities,51529.89,Utilities expense,04:18:42
+2023-12-06,Stocks,32749.35,Stocks expense,14:56:34
+2023-12-19,Personal,48471.99,Personal expense,10:07:15
+2023-08-12,Petty Cash,16192.53,Petty Cash expense,05:25:22
+2023-12-15,Maintenance,46224.91,Maintenance expense,15:45:56
+2023-10-01,Petty Cash,38392.28,Petty Cash expense,18:04:49
+2023-12-28,Stocks,24341.62,Stocks expense,11:27:20

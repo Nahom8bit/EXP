@@ -1,10 +1,10 @@
-import streamlit as st
+from datetime import datetime
 import csv
+import json
 import plotly.express as px
 import pandas as pd
-import json
+import streamlit as st
 from collections import defaultdict
-from datetime import datetime
 
 class ExpenseTracker:
     def __init__(self):
@@ -51,17 +51,23 @@ def entry():
 @st.cache_data
 def load_data():
     try:
-        return pd.read_csv('expenses.csv', parse_dates=[0], names=['Date', 'Category', 'Amount', 'Comment'], header=None, skiprows=1, error_bad_lines=False)
+        df = pd.read_csv('expenses.csv', parse_dates=[0], skiprows=1, error_bad_lines=False)
+        df.columns = ['Date', 'Category', 'Amount', 'Comment', 'Time']
+        return df
     except Exception as e:
         st.error(f'An error occurred while loading the data: {str(e)}. Please check the CSV file.')
         return None
 
 def report():
-    df = load_data()
+    if st.button('Refresh Data'):
+        df = load_data()
+    else:
+        df = load_data()
+
     if df is None:
         return
 
-    df['Date'] = pd.to_datetime(df['Date'])
+    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
     selected_categories = st.multiselect("Select Categories", options=flat_categories, default=flat_categories)
 
     if selected_categories:
@@ -102,7 +108,11 @@ def report():
         st.error(str(e))
 
 def review():
-    df = load_data()
+    if st.button('Refresh Data'):
+        df = load_data()
+    else:
+        df = load_data()
+
     if df is None:
         return
 
