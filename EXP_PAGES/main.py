@@ -21,9 +21,9 @@ class ExpenseTracker:
 
 tracker = ExpenseTracker()
 
-st.title('Expense Tracker')
+st.title('EXP APP')
 
-page = st.sidebar.radio("Go to", ("📝 Entry", "📊 Report", "🔍 Review"))
+page = st.sidebar.radio("Go to", ("📝 Entry", "📊 Report", "🔍 Review", "👤 Account"))
 
 # Load the categories from the JSON file
 with open('categories.json') as f:
@@ -90,22 +90,31 @@ def report():
         aggfunc='sum'
     ).fillna(0)
 
-    try:
+    chart_type = st.selectbox("Select Chart Type", options=["Line", "Bar"])
+
+    if chart_type == "Line":
         fig = px.line(
             pivot_table,
             labels={'value': 'Amount', 'variable': 'Category'},
             title='Total Expenses Over Time'
         )
-        fig.update_layout(
-            xaxis_title='Date',
-            yaxis_title='Amount',
-            legend_title='Category',
-            hovermode='x'
-        )
         fig.update_traces(mode='lines+markers')
-        st.plotly_chart(fig, use_container_width=True)
-    except Exception as e:
-        st.error(str(e))
+    elif chart_type == "Bar":
+        fig = px.bar(
+            pivot_table,
+            labels={'value': 'Amount', 'variable': 'Category'},
+            title='Total Expenses Over Time'
+        )
+
+    fig.update_layout(
+        xaxis_title='Date',
+        yaxis_title='Amount',
+        legend_title='Category',
+        hovermode='x'
+    )
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.write(df_filtered)
 
 def review():
     if st.button('Refresh Data'):
@@ -118,9 +127,17 @@ def review():
 
     st.write(df)
 
+# Define a new function called `account()`
+def account():
+    st.title('Account Page')
+    st.write('This is the Account Page.')
+
+# Call the `account()` function when the "Account Page" option is selected
 if page == "📝 Entry":
     entry()
 elif page == "📊 Report":
     report()
 elif page == "🔍 Review":
     review()
+elif page == "👤 Account":
+    account()
